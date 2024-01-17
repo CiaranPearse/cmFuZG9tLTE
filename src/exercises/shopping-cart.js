@@ -14,11 +14,50 @@
 * 1002   iPad
 *
 * */
+
+const fetchData = async (url) => {
+  const response = await fetch(url);
+  const jsonResponse = await response.json();
+  return jsonResponse;
+}
+
+const fetchProducts = async () => {
+  let cart = await fetchData('http://localhost:4002/cart/');
+  let products = await fetchData('http://localhost:4002/products/');
+
+  let cartData = cart.map((item)=>{
+    return products.filter(
+      (product)=>{
+        return product.id == item.id;
+      })[0];
+    });
+  return cartData;
+}
+
+const buildTableCells = (text)=>{
+  const td = document.createElement('td');
+  td.innerHTML = text;
+  return td;
+};
 const View = {
-  init: () => {
+  init: async () => {
     const tbodyElem = document.getElementById('shopping-cart-tbl').querySelector('tbody');
 
-    console.log('TODO: Please see the above requirement');
+    const productsInCart = await fetchProducts();
+    productsInCart.forEach((item, i) => {
+      const productTableRow = document.createElement('tr');
+      const productId = buildTableCells(item.id);
+      const productName = buildTableCells(item.name);
+
+      productTableRow.appendChild(productId);
+      productTableRow.appendChild(productName);
+
+      if (i % 2 === 0) {
+        productTableRow.classList.add('even-row');
+      }
+
+      tbodyElem.appendChild(productTableRow);
+    });
   }
 };
 document.addEventListener('DOMContentLoaded', View.init);

@@ -1,4 +1,17 @@
 .c-tab--btns {display: flex; flex-direction: row; gap: 1rem;}
+.c-tab--btns button {
+    color: white;
+    padding: 10px;
+    background-color: #0842a0;
+    border: 0px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.c-tab--btns button:hover {
+    background-color: #365e9e;
+}
+
 .c-tab--content {
     padding: 1rem;
 }
@@ -8,4 +21,42 @@
 
 .c-tab--content > .c-tab--active {
     display: block;
+}
+
+#relative-date-btn {
+    margin-top: 10px;
+    color: white;
+    padding: 10px;
+    background-color: #0842a0;
+    border: 0px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#relative-date-btn:hover {
+    background-color: #365e9e;
+}
+
+
+.c-numeric-input__error-msg {
+    margin: 2px;
+    padding: 2px;
+    border: 1px solid red;
+    text-transform: uppercase;
+}
+
+.c-numeric-input__error-msg {
+    margin: 2px;
+    padding: 2px;
+    border: 1px solid red;
+    text-transform: uppercase;
+}
+
+.c-numeric-input--valid {
+    border: 1px solid green;
+}
+
+
+#shopping-cart-tbl .even-row {
+    background-color: gainsboro;;
 }
